@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <title>Vite Project</title>
+  <title>Insights AIt</title>
   <style>
-    body {
+    body:not(.score-container){
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,9 +17,9 @@
 
     .container {
       display: flex;
-      align-items: center;
+      align-items: flex-start; /* Change align-items to flex-start */
     }
-
+    
     .paragraph {
       flex: 1;
       padding: 10px;
@@ -34,20 +34,23 @@
       background-color: #333;
     }
 
-    .welcome {
-      font-size: 48px;
-      margin-top: 50vh;
+    .score-container {
+      position: absolute  !important; /* Position the score container absolutely within the page */
+      top: 10px !important; /* Adjust the top value to control the vertical positioning */
+      right: 10px !important; /* Adjust the right value to control the horizontal positioning */
+      background-color: #1a1a1a !important; /* Set the background color for the score container */
+      padding: 10px !important; /* Add some padding for better visibility */
+      border-radius: 5px !important;/* Add rounded corners for a nice appearance */
+      color: #fff !important; /* Set the text color */
     }
     
-    #welcome {
-      margin-top: 50vh;
-    }
     
     
   </style>
 </head>
 <body>
 
+  <div id="score" class="score">Score: <span id="score-value">0</span></div>
 
   <div class="container">
     <div class="paragraph" id="left-paragraph">

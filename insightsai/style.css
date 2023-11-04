@@ -129,3 +129,12 @@ header {
   /* Add padding or margin to the content to prevent it from being hidden behind the header */
   padding-top: 60px; /* Adjust this value to match the header height */
 }
+.score-container {
+  position: absolute  !important; /* Position the score container absolutely within the page */
+  top: 10px !important; /* Adjust the top value to control the vertical positioning */
+  right: 10px !important; /* Adjust the right value to control the horizontal positioning */
+  background-color: #1a1a1a !important; /* Set the background color for the score container */
+  padding: 10px !important; /* Add some padding for better visibility */
+  border-radius: 5px !important;/* Add rounded corners for a nice appearance */
+  color: #fff !important; /* Set the text color */
+}
