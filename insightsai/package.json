@@ -1,0 +1,19 @@
+{
+  "name": "insightsai",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "jquery": "^3.7.1",
+    "sass": "^1.69.5",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "nojs": "^0.1.3"
+  }
+}

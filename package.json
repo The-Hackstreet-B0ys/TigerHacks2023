@@ -1,1 +1,11 @@
-"css:scss": "node-sass --output-style compressed -o dist src/scss"
+{
+  "name": "insightsai-tigerhacks",
+  "version": "1.0.0",
+  "description": "Tiger Hacks 2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hackstreet-b0ys",
+  "license": "ISC"
+}
