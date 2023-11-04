@@ -114,10 +114,3 @@ button:focus-visible {
 .paragraph:hover {
   color: grey;
 }
-
-.welcome {
-  font-size: 48px;
-  margin-top: 50vh;
-}
-
-
