@@ -25,43 +25,54 @@ const humanGeneratedParagraphs = [
   "Pluto is a dwarf planet located in the Kuiper belt. It was discovered in 1930 and was initially classified as a planet. However, in 2006, it was reclassified as a dwarf planet due to the discovery of other similar objects in the Kuiper belt. Pluto is the largest known dwarf planet and has a complex system of five moons. Its surface is also quite diverse, featuring mountains, valleys, and glaciers.",
 ];
 
-// Add click event listeners for the user's answer.
-leftParagraph.addEventListener('click', () => handleUserClick(true));
-rightParagraph.addEventListener('click', () => handleUserClick(false));
+function addClickEventListeners() {
+  leftParagraph.addEventListener('click', () => handleUserClick(true));
+  rightParagraph.addEventListener('click', () => handleUserClick(false));
+}
 
+// Function to remove click event listeners from paragraphs
+function removeClickEventListeners() {
+  leftParagraph.removeEventListener('click', () => handleUserClick(true));
+  rightParagraph.removeEventListener('click', () => handleUserClick(false));
+}
+
+// Function to show the next question
 // Function to show the next question
 function showNextQuestion() {
   if (question === 5) {
-    // Redirect to 'end.html' after all questions are answered
-    window.location.replace("end.html");
-    return; // Exit the function
+    removeClickEventListeners();
+    sleep(1500);
+    endFunction();
+    return;
   }
 
-  // Generate a random true/false value
   const randomTF = getRandomTF();
 
-  if (randomTF) { // If true, display the AI-generated paragraph on the left.
+  if (randomTF) {
     leftParagraph.textContent = aiGeneratedParagraphs[question];
     rightParagraph.textContent = humanGeneratedParagraphs[question];
-  } else { // If false, display the AI-generated paragraph on the right.
+    // Set a data attribute indicating this is an AI-generated paragraph
+    leftParagraph.dataset.isAIParagraph = 'true';
+  } else {
     leftParagraph.textContent = humanGeneratedParagraphs[question];
     rightParagraph.textContent = aiGeneratedParagraphs[question];
+    // Remove the data attribute if not AI-generated
+    leftParagraph.removeAttribute('data-is-ai-paragraph');
   }
 
-  // Increment the question count after displaying the new question.
   question++;
 }
 
 // Function to handle user clicks and check the answer
 function handleUserClick(userClickedOnAI) {
-  if (userClickedOnAI) { // If user clicked on the AI-generated paragraph.
+  // Check if the left paragraph is an AI-generated paragraph
+  const isAIParagraph = leftParagraph.dataset.isAIParagraph === 'true';
+
+  if (userClickedOnAI && isAIParagraph) {
     score++;
   }
 
-  // Update the score value displayed on the webpage.
   scoreValue.textContent = score;
-
-  // Show the next question.
   showNextQuestion();
 }
 
@@ -71,6 +82,37 @@ function getRandomTF() {
 }
 
 // Show the first question when the page loads.
+addClickEventListeners();
 showNextQuestion();
 
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+function endFunction() {
+  // Change the score-container background and text color to black
+  $('#score').remove();
+
+
+  // Remove all elements inside 'masterdiv' using jQuery
+  $('#masterdiv').empty();
+
+ // Create a new element for the end score
+ const endScore = document.createElement('div');
+ endScore.textContent = `Your Score: ${score}`;
+ endScore.classList.add('end-score');
+
+ // Create a <p> element for additional text
+ const additionalText = document.createElement('p');
+ additionalText.textContent = "Thank you for playing!"; // Modify the text as needed
+
+ // Append the end score and additional text elements to 'masterdiv'
+ $('#masterdiv').append(endScore);
+
+
+  $('#masterdiv').append("<br>");
+
+  $('#masterdiv').append(additionalText);
+}

@@ -6,13 +6,27 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Insights AIt</title>
   <style>
-    body:not(.score-container){
+    /* Use a more specific selector for the score-container */
+    body:not(.score-container) {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
     }
+
+    /* Adjust the style for the score-container with a more specific selector */
+    body:not(.score-container) .score-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #1a1a1a;
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+      z-index: 1000;
+    }
+
 
 
     .container {
@@ -35,10 +49,11 @@
     }
 
     .score-container {
+      font-size: x-large;
       position: absolute  !important; /* Position the score container absolutely within the page */
-      top: 10px !important; /* Adjust the top value to control the vertical positioning */
-      right: 10px !important; /* Adjust the right value to control the horizontal positioning */
-      background-color: #1a1a1a !important; /* Set the background color for the score container */
+      top: 90px !important; /* Adjust the top value to control the vertical positioning */
+      right: 30px !important; /* Adjust the right value to control the horizontal positioning */
+      background-color: #AFE1AF !important; /* Set the background color for the score container */
       padding: 10px !important; /* Add some padding for better visibility */
       border-radius: 5px !important;/* Add rounded corners for a nice appearance */
       color: #fff !important; /* Set the text color */
@@ -54,17 +69,17 @@
 </head>
 <body>
 
-  <div id="score" class="score">Score: <span id="score-value">0</span></div>
+  <div id="score" class="score-container">Score: <span id="score-value">0</span></div>
 
-  <div class="container">
+  <div id="masterdiv" class="container">
     <div class="paragraph" id="left-paragraph">
-      <p>if you sse this, i seriously messed up.</p>
+      <p>if you see this, I seriously messed up.</p>
     </div>
     <div class="divider"></div>
     <div class="paragraph" id="right-paragraph">
-      <p>my bad. </p>
+      <p>my bad.</p>
     </div>
-  </div>  
+  </div>
 </body>
 <script type="module" src="/src/main.js"></script>
 </html>
