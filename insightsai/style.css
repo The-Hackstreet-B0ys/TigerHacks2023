@@ -138,3 +138,7 @@ header {
   border-radius: 5px !important;/* Add rounded corners for a nice appearance */
   color: #fff !important; /* Set the text color */
 }
+.fade-out {
+  opacity: 0;
+  transition: opacity 4s;
+}
